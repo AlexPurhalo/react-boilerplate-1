@@ -2,6 +2,7 @@ import React, { PureComponent } from 'react';
 import '../../scss/main.scss';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import {withRouter} from 'react-router-dom';
 
 import * as mainActions from '../../redux/ducks/main';
 
@@ -30,4 +31,4 @@ function mapDispatchToProps( dispatch ) {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Test);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Test));

@@ -1,3 +1,4 @@
+import {LOCATION_CHANGE, routerReducer} from 'react-router-redux';
 import { combineReducers } from 'redux';
 
 //include ducks reducers
@@ -7,6 +8,7 @@ import main from './ducks/main';
  */
 export default function createReducer() {
 	return combineReducers({
+      routerReducer,
       main,
 	})
 }

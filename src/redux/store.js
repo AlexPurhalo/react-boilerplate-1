@@ -1,13 +1,24 @@
-import createLogger from 'redux-logger';
+import { createLogger } from 'redux-logger';
 import { createStore, applyMiddleware } from 'redux';
+import {routerMiddleware} from 'react-router-redux';
 import createReducer from './reducers';
 
 export default function configureStore( history ) {
 	const initialState = {};
 	const logger = createLogger;
 	const middlewares = [
-		logger,
-	];
+    routerMiddleware(history),
+  ];
+  
+  if (process.env.NODE_ENV === `development`) {
+    const logger = createLogger({
+        duration: true,
+        timestamp: false,
+        collapsed: true,
+    });
+
+    middlewares.push(logger);
+  }
 
 	const store = createStore(
 		createReducer(),
